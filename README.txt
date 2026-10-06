@@ -1,11 +1,14 @@
-Carrion Spider Quick Connect Signaling Server
+Carrion Spider Multi-Player Signaling Server
 
-1. Upload this folder to a Node.js host (Render works).
-2. Build command: npm install
-3. Start command: npm start
-4. Use the host's secure WebSocket URL in the game:
-   https://example.onrender.com -> wss://example.onrender.com
-5. Both players enter the same room code.
-   Host clicks QUICK HOST; Player 2 clicks QUICK JOIN.
+Replace your previous signaling server with this version.
 
-The server only exchanges WebRTC offer/answer messages. Game-state traffic is peer-to-peer after connection.
+Render:
+Build command: npm install
+Start command: npm start
+
+The host can keep the room open while any number of players join with the same room code.
+Architecture: star topology. Each guest has one WebRTC connection to the host; the host relays
+other players' public positions/profiles over data channels.
+
+There is no hard-coded player cap, but practical capacity depends on the host device/network,
+browser WebRTC limits, and your hosting/network conditions.
